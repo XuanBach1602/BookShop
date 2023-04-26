@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UKQit4IfVsbOkuEddIxQ+fPi2KKf4bwtbJBLiwl4Uik=",
+  "Hash": "qSCpVIH1CeQI2fzODtyEFQ0fEGbfCbNS9xrCAToa6L4=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BulkyBookWeb.bundle.scp.css"
     },
     {
-      "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\bootswatchTheme.css",
+      "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\boostwatchTheme.css",
       "SourceId": "BulkyBookWeb",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\",
       "BasePath": "_content/BulkyBookWeb",
-      "RelativePath": "css/bootswatchTheme.css",
+      "RelativePath": "css/boostwatchTheme.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,7 +65,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bootswatchTheme.css"
+      "OriginalItemSpec": "wwwroot\\css\\boostwatchTheme.css"
     },
     {
       "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\site.css",

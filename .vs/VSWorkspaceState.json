@@ -2,10 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\BulkyBookWeb",
+    "\\BulkyBookWeb\\bin",
     "\\BulkyBookWeb\\Controllers",
-    "\\BulkyBookWeb\\Data",
-    "\\BulkyBookWeb\\Models",
-    "\\BulkyBookWeb\\Properties",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Home"
   ],
