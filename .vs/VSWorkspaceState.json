@@ -3,9 +3,7 @@
     "",
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\bin",
-    "\\BulkyBookWeb\\Controllers",
-    "\\BulkyBookWeb\\Views",
-    "\\BulkyBookWeb\\Views\\Home"
+    "\\BulkyBookWeb\\Views"
   ],
   "SelectedNode": "\\BulkyBook.sln",
   "PreviewInSolutionExplorer": false

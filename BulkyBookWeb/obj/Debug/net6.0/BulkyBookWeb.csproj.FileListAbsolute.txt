@@ -367,3 +367,6 @@ C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\Bulky
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\BulkyBook.Models.dll
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\BulkyBook.DataAccess.pdb
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\BulkyBook.Models.pdb
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\obj\Debug\net6.0\BulkyBookWeb.MvcApplicationPartsAssemblyInfo.cs
