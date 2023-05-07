@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\7ec75da6-a7b7-4496-99fc-9a1003d21a58.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\7ec75da6-a7b7-4496-99fc-9a1003d21a58.jpg"
+    },
+    {
       "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
