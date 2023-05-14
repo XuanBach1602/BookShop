@@ -3,7 +3,8 @@
     "",
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\bin",
-    "\\BulkyBookWeb\\Views"
+    "\\BulkyBookWeb\\Views",
+    "\\BulkyBookWeb\\Views\\Shared"
   ],
   "SelectedNode": "\\BulkyBook.sln",
   "PreviewInSolutionExplorer": false
