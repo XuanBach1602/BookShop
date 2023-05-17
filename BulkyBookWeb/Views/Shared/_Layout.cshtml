@@ -148,6 +148,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
                 </li>
+                <partial name="_LoginPartial" />
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Cart", new { area = "Customer" })" class="nav-link active">
+                        <i class="bi bi-cart-check-fill"></i>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -158,7 +164,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
-                <partial name="_LoginPartial" />
             </ul>
         </nav>
         <!-- /.navbar -->

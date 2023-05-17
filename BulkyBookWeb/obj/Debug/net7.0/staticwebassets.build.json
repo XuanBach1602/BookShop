@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+ovNmLkgBVQYW99DNbvOAjc0h10V335CJJ+JuyFVJ1Q=",
+  "Hash": "GUiJ7skjqTdp6d+ljrwPV0AO5Ri1Dat9fwvQauP4sfs=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -35103,6 +35103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\b175dcfd-2ad8-4ab9-9fd8-4dc675a8cdbc.jpg"
+    },
+    {
+      "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg",
+      "SourceId": "BulkyBookWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\",
+      "BasePath": "_content/BulkyBookWeb",
+      "RelativePath": "images/products/f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg"
     },
     {
       "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\js\\company.js",

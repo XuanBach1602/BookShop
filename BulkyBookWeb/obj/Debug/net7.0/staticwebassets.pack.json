@@ -8253,6 +8253,10 @@
       "PackagePath": "staticwebassets\\images\\products\\b175dcfd-2ad8-4ab9-9fd8-4dc675a8cdbc.jpg"
     },
     {
+      "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg"
+    },
+    {
       "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\js\\company.js",
       "PackagePath": "staticwebassets\\js\\company.js"
     },
