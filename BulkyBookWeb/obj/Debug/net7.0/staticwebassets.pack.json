@@ -8233,6 +8233,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\lawn_leaf.jpg",
+      "PackagePath": "staticwebassets\\images\\lawn_leaf.jpg"
+    },
+    {
       "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\0220b829-ac06-48d2-acd1-f937438d6f7c.jpg",
       "PackagePath": "staticwebassets\\images\\products\\0220b829-ac06-48d2-acd1-f937438d6f7c.jpg"
     },

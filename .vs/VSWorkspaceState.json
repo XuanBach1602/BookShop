@@ -1,13 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BulkyBook.Model",
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\Areas",
-    "\\BulkyBookWeb\\Areas\\Admin",
+    "\\BulkyBookWeb\\Areas\\Customer",
+    "\\BulkyBookWeb\\Areas\\Customer\\Views",
+    "\\BulkyBookWeb\\Areas\\Customer\\Views\\Cart",
     "\\BulkyBookWeb\\Areas\\Identity",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages",
-    "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Shared"
   ],
