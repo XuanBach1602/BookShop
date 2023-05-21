@@ -1,35 +1,73 @@
-﻿@model IEnumerable<BulkyBook.Models.Product>
+﻿@model PaginatedList<BulkyBook.Models.Product>
 
-<div class="row pb-3">
-    @foreach(var product in Model)
-    {
-        <div class="col-lg-3 col-md-6">
-            <div class="row p-2">
-                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;">
-                    <div class="card">
-                        <img src="@product.ImageUrl" class="cardcard-img-top rounded"/>
-                        <div class="card-body">
-                            <div class="pl-1">
-                                <p class=" h5 text-primary">@product.Title</p>         
-                                <p class=" text-info">by<b>@product.Author</b></p>
-                            </div>
 
-                            <div class="pl-1">
-                                <p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
-                            </div>
 
-                            <div class="pl-1">
-                                <p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+<div class="container">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by title: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+    <p>
+        Sorted by:
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
+    </p>
+    <div class="row pb-3">
+        @foreach (var product in Model)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="row p-2">
+                    <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:520px">
+                        <div class="card" style="height:100%">
+                            <img src="@product.ImageUrl" class="cardcard-img-top rounded" style="height:200px" />
+                            <div class="card-body">
+                                <div class="pl-1">
+                                    <p class=" h5 text-primary">@product.Title</p>
+                                    <p class=" text-info">by<b>@product.Author</b></p>
+                                </div>
+
+                                <div class="pl-1">
+                                    <p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
+                                </div>
+
+                                <div class="pl-1">
+                                    <p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
-                                Details
-                            </a>
+                            <div>
+                                <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id" style="">
+                                    Details
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+    </div>
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
     }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
 </div>

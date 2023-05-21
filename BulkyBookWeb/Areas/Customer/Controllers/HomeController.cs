@@ -2,6 +2,7 @@
 using BulkyBook.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -19,10 +20,41 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
-            IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category,CoverType");
-            return View(productList);
+
+
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";
+            ViewData["CurrentFilter"] = searchString;
+
+            var products = from product in _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType")
+            select product;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    products = products.OrderByDescending(s => s.Title);
+                    break;
+                case "price":
+                    products = products.OrderBy(s => s.Price100);
+                    break;
+                case "price_desc":
+                    products = products.OrderByDescending(s => s.Price100);
+                    break;
+                default:
+                    products = products.OrderBy(s => s.Title);
+                    break;
+            }
+            int pageSize = 10;
+            return View(await PaginatedList<Product>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
 
         public IActionResult Details(int productId)

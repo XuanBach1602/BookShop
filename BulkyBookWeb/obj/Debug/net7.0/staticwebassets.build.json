@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5D3OtKkWuWl5UbEQiEu3Ln4Swd92KJ/p5uK+y+4Nx0Y=",
+  "Hash": "0/8YvJu9JnmAvsrztRQYId0xmKeWx5nmn9NR3ufrzBM=",
   "Source": "BulkyBookWeb",
   "BasePath": "_content/BulkyBookWeb",
   "Mode": "Default",
@@ -35071,6 +35071,23 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\4ec8541e-8ca7-4d51-8af5-80de1c1d5884.png"
     },
     {
+      "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\5e998bc9-58dd-4495-a5a0-ceb413b29896.jpg",
+      "SourceId": "BulkyBookWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\",
+      "BasePath": "_content/BulkyBookWeb",
+      "RelativePath": "images/products/5e998bc9-58dd-4495-a5a0-ceb413b29896.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\5e998bc9-58dd-4495-a5a0-ceb413b29896.jpg"
+    },
+    {
       "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\7777e19d-9c37-4abf-8e2a-2aa75221db4f.jpg",
       "SourceId": "BulkyBookWeb",
       "SourceType": "Discovered",
@@ -35120,6 +35137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\b175dcfd-2ad8-4ab9-9fd8-4dc675a8cdbc.jpg"
+    },
+    {
+      "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\dff5f032-8ff9-45f7-98b4-30e7a07c3a75.jpg",
+      "SourceId": "BulkyBookWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\",
+      "BasePath": "_content/BulkyBookWeb",
+      "RelativePath": "images/products/dff5f032-8ff9-45f7-98b4-30e7a07c3a75.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\dff5f032-8ff9-45f7-98b4-30e7a07c3a75.jpg"
     },
     {
       "Identity": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\images\\products\\f3c722d2-6b7c-4fd0-ad4f-aead4a15f87d.jpg",
