@@ -21,41 +21,55 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         }
 
         public async Task<IActionResult> Index(
-            string sortOrder,
-            string currentFilter,
-            string searchString,
-            int? pageNumber)
+         string sortOrder,
+         string currentFilter,
+         string searchString,
+         int? pageNumber,
+         string category)
         {
-
+            var products = from product in _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType")
+                           select product;
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";
             ViewData["CurrentFilter"] = searchString;
+            ViewData["Category"] = category;
 
-            var products = from product in _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType")
-            select product;
+            ViewData["Categories"] = _unitOfWork.Category.GetAll().Select(c => c.Name).ToList();
+            ViewData["SearchString"] = searchString;
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper()));
+                products = products.Where(p => p.Title.ToUpper().Contains(searchString.ToUpper()));
             }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                products = products.Where(p => p.Category.Name == category);
+            }
+
+            var searchedProducts = products; // Lưu kết quả tìm kiếm
+
             switch (sortOrder)
             {
                 case "name_desc":
-                    products = products.OrderByDescending(s => s.Title);
+                    searchedProducts = searchedProducts.OrderByDescending(s => s.Title);
                     break;
                 case "price":
-                    products = products.OrderBy(s => s.Price100);
+                    searchedProducts = searchedProducts.OrderBy(s => s.Price100);
                     break;
                 case "price_desc":
-                    products = products.OrderByDescending(s => s.Price100);
+                    searchedProducts = searchedProducts.OrderByDescending(s => s.Price100);
                     break;
                 default:
-                    products = products.OrderBy(s => s.Title);
+                    searchedProducts = searchedProducts.OrderBy(s => s.Title);
                     break;
             }
+
             int pageSize = 10;
-            return View(await PaginatedList<Product>.CreateAsync(products, pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<Product>.CreateAsync(searchedProducts, pageNumber ?? 1, pageSize));
         }
+
 
         public IActionResult Details(int productId)
         {

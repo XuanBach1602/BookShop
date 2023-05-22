@@ -1,12 +1,10 @@
 ﻿@model PaginatedList<BulkyBook.Models.Product>
 
-
-
 <div class="container">
     <form asp-action="Index" method="get">
         <div class="form-actions no-color">
             <p>
-                Find by title: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                Find by title: <input type="text" name="searchString" value="@ViewData["SearchString"]" />
                 <input type="submit" value="Search" class="btn btn-default" /> |
                 <a asp-action="Index">Back to Full List</a>
             </p>
@@ -14,9 +12,22 @@
     </form>
     <p>
         Sorted by:
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Title</a>
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["SearchString"]">Title</a>
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["SearchString"]">Price</a>
+
     </p>
+    <div class="form-group">
+        <form asp-action="Index" method="get">
+            <select name="category" class="form-control" onchange="this.form.submit();">
+                <option value="">All</option>
+                @foreach (var category in ViewData["Categories"] as List<string>)
+                {
+                    <option value="@category" selected="@((string)ViewData["Category"] == category)">@category</option>
+                }
+            </select>
+        </form>
+    </div>
+
     <div class="row pb-3">
         @foreach (var product in Model)
         {
@@ -28,7 +39,7 @@
                             <div class="card-body">
                                 <div class="pl-1">
                                     <p class=" h5 text-primary">@product.Title</p>
-                                    <p class=" text-info">by<b>@product.Author</b></p>
+                                    <p class=" text-info">by <b>@product.Author</b></p>
                                 </div>
 
                                 <div class="pl-1">
@@ -40,7 +51,7 @@
                                 </div>
                             </div>
                             <div>
-                                <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id" style="">
+                                <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
                                     Details
                                 </a>
                             </div>
@@ -51,23 +62,22 @@
         }
     </div>
 
-    @{
-        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    }
-
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex - 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @prevDisabled">
-        Previous
-    </a>
-    <a asp-action="Index"
-       asp-route-sortOrder="@ViewData["CurrentSort"]"
-       asp-route-pageNumber="@(Model.PageIndex + 1)"
-       asp-route-currentFilter="@ViewData["CurrentFilter"]"
-       class="btn btn-default @nextDisabled">
-        Next
-    </a>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Previous</a>
+                </li>
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@i</a>
+                    </li>
+                }
+                <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
