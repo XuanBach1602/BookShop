@@ -21,8 +21,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         }
 
         public async Task<IActionResult> Index(
-         string sortOrder,
-         string currentFilter,
+         string sortOrder,      
          string searchString,
          int? pageNumber,
          string category)
@@ -31,12 +30,11 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                            select product;
 
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";
-            ViewData["CurrentFilter"] = searchString;
+            ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";          
             ViewData["Category"] = category;
-
             ViewData["Categories"] = _unitOfWork.Category.GetAll().Select(c => c.Name).ToList();
             ViewData["SearchString"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -66,7 +64,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 8;
             return View(await PaginatedList<Product>.CreateAsync(searchedProducts, pageNumber ?? 1, pageSize));
         }
 

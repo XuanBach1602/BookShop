@@ -8,12 +8,13 @@
                 <input type="submit" value="Search" class="btn btn-default" /> |
                 <a asp-action="Index">Back to Full List</a>
             </p>
+            <input type="hidden" name="category" value="@ViewData["Category"]" />
         </div>
     </form>
     <p>
         Sorted by:
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["SearchString"]">Title</a>
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["SearchString"]">Price</a>
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Title</a>
+        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Price</a>
 
     </p>
     <div class="form-group">
@@ -25,6 +26,7 @@
                     <option value="@category" selected="@((string)ViewData["Category"] == category)">@category</option>
                 }
             </select>
+            <input type="text" name="searchString" value="@ViewData["SearchString"]" style="display: none;" />
         </form>
     </div>
 
@@ -66,16 +68,16 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Previous</a>
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Previous</a>
                 </li>
                 @for (int i = 1; i <= Model.TotalPages; i++)
                 {
                     <li class="page-item @(i == Model.PageIndex ? "active" : "")">
-                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">@i</a>
+                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">@i</a>
                     </li>
                 }
                 <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Next</a>
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Next</a>
                 </li>
             </ul>
         </nav>

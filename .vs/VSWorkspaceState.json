@@ -8,6 +8,7 @@
     "\\BulkyBookWeb\\Areas\\Customer\\Views\\Cart",
     "\\BulkyBookWeb\\Areas\\Identity",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages",
+    "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Shared"
   ],
