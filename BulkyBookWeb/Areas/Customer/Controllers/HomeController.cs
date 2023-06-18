@@ -1,9 +1,12 @@
 ﻿using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using BulkyBook.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 using System.Security.Claims;
 
 namespace BulkyBookWeb.Areas.Customer.Controllers
@@ -96,14 +99,19 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             if (cartFromDb == null)
             {
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
-            }
+				//int cartCount = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count;
+				//HttpContext.Session.SetInt32(SD.SessionCart, cartCount);
+				//_unitOfWork.Save();
+			}
             else
             {
                 _unitOfWork.ShoppingCart.IncrementCount(cartFromDb, shoppingCart.Count);
             }
             _unitOfWork.Save();
+			int cartCount = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count;
+			HttpContext.Session.SetInt32(SD.SessionCart, cartCount);
 
-            return RedirectToAction("Index");
+			return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

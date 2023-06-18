@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -16,4 +16,30 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+/* Đổi màu nền của bảng */
+.tblData {
+    background-color: #f2f2f2;
+}
+
+/* Đổi màu nền của hàng chẵn */
+.tblData tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+/* Đổi màu nền của hàng lẻ */
+.tblData tr:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+/* Đổi màu chữ của tiêu đề cột */
+.tblData th {
+    color: #ffffff;
+    background-color: #333333;
+}
+
+/* Đổi màu chữ của nội dung trong các ô */
+.tblData td {
+    color: #333333;
 }

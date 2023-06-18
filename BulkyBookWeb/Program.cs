@@ -34,6 +34,16 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Loout";
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 });
+builder.Services.AddSession();
+
+builder.Services.AddAuthentication().AddFacebook(options =>
+{
+    options.AppId = "1010184239970638";
+    options.AppSecret = "fcf0a01d71a9f1baafafa7c26fdb21fd";
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,7 +58,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseAuthorization();

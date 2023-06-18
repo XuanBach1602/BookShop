@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/CoverType/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ292ZXJUeXBlXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Order/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Order/PaymentConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJcUGF5bWVudENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Areas/Admin/Views/Product/Index.cshtml]
@@ -264,8 +280,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Views/Shared/Components/ShoppingCart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2hvcHBpbmdDYXJ0XERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/CodeVisualStudio/Learn_Net_Core/BulkyBook/BulkyBookWeb/Views/Shared/_LoginPartial.cshtml]

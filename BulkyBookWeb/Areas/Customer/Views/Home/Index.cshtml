@@ -1,7 +1,7 @@
 ﻿@model PaginatedList<BulkyBook.Models.Product>
 
 <div class="container">
-    <form asp-action="Index" method="get">
+   @* <form asp-action="Index" method="get">
         <div class="form-actions no-color">
             <p>
                 Find by title: <input type="text" name="searchString" value="@ViewData["SearchString"]" />
@@ -10,7 +10,7 @@
             </p>
             <input type="hidden" name="category" value="@ViewData["Category"]" />
         </div>
-    </form>
+    </form>*@
     <p>
         Sorted by:
         <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Title</a>

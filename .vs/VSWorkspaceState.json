@@ -3,15 +3,14 @@
     "",
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\Areas",
-    "\\BulkyBookWeb\\Areas\\Customer",
-    "\\BulkyBookWeb\\Areas\\Customer\\Views",
-    "\\BulkyBookWeb\\Areas\\Customer\\Views\\Cart",
+    "\\BulkyBookWeb\\Areas\\Admin",
+    "\\BulkyBookWeb\\Areas\\Admin\\Views",
     "\\BulkyBookWeb\\Areas\\Identity",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Shared"
   ],
-  "SelectedNode": "\\BulkyBook.sln",
+  "SelectedNode": "\\BulkyBookWeb\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

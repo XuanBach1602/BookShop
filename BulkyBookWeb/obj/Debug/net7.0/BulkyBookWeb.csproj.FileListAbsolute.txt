@@ -292,3 +292,7 @@ C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\Micro
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\BulkyBook.Utility.dll
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\BulkyBook.Utility.pdb
 C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\Stripe.net.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\MailKit.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\MimeKit.dll
+C:\CodeVisualStudio\Learn_Net_Core\BulkyBook\BulkyBookWeb\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Facebook.dll
