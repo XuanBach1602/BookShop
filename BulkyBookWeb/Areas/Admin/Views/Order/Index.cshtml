@@ -1,4 +1,5 @@
-﻿@{
+﻿<link rel="stylesheet" type="text/css" href="~/css/order.css">
+@{
     var status = Context.Request.Query["status"];
     var pending = "text-primary";
     var inprocess = "text-primary";
@@ -71,6 +72,17 @@
                 <th></th>
             </tr>
         </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </tfoot>
     </table>
 </div>
 

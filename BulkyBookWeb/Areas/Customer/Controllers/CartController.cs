@@ -79,12 +79,23 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
+            DateTime currentDate = DateTime.Now;
+            string dateString = currentDate.ToString("yyyyMMdd"); // Lấy chuỗi ngày tháng năm theo định dạng "yyyyMMdd"
+            Guid guid = Guid.NewGuid();
+            string guidString = guid.ToString().Substring(0, 6); // Lấy 6 kí tự đầu tiên từ giá trị Guid
+
+            string orderCode = dateString + guidString;
+
+
+
             ShoppingCartVM.ListCart = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value, includeProperties: "Product");
 
             ShoppingCartVM.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
             ShoppingCartVM.OrderHeader.OrderStatus = SD.StatusPending;
             ShoppingCartVM.OrderHeader.OrderDate = DateTime.Now;
             ShoppingCartVM.OrderHeader.ApplicationUserId = claim.Value;
+            ShoppingCartVM.OrderHeader.OrderCode = orderCode;
+
 
             foreach (var cart in ShoppingCartVM.ListCart)
             {

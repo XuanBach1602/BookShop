@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/BulkyBookWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/1.4.0/css/searchPanes.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -130,50 +131,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Home", new { area = "Customer"})" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>Home</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("", "Home", new { area = "Customer"})" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Contact</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="@Url.Action("Index", "Category", new { area = "Admin" })" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>Category</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "CoverType", new { area = "Admin" })" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>CoverType</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Product", new { area = "Admin" })" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>Product</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Company", new { area = "Admin" })" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>Company</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index", "Order", new { area = "Admin" })" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        @*<i class="far fa-circle nav-icon"></i>*@
                                         <p>Manage Order</p>
                                     </a>
                                 </li>
                             </ul>
 
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -181,7 +176,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>
-                        </li>
+                        </li>*@
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -257,6 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/1.4.0/js/dataTables.searchPanes.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/rtw2nzsq4vt9ea610356b2vquhz91smy9tdpuewbrf9yd2sz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

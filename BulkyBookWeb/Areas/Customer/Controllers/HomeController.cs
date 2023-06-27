@@ -32,6 +32,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             var products = from product in _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType")
                            select product;
 
+
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";          
             ViewData["Category"] = category;

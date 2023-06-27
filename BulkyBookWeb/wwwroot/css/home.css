@@ -1,0 +1,28 @@
+﻿a {
+    text-decoration: none;
+}
+
+.sort-btn:hover {
+    color: aqua;
+}
+.selected-category-box {
+    background-color: red;
+}
+
+.category_box {
+    margin:5px;
+    border-radius:10px;
+    padding:4px 15px;
+}
+
+.category_link {
+    color: rgb(39, 39, 42);
+}
+
+.category_link:hover {
+    color: rgb(39, 39, 42);
+}
+
+.category_box:hover {
+    background-color: rgba(128, 128, 128,0.3);
+}

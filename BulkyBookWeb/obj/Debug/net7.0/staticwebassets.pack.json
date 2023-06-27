@@ -8225,6 +8225,14 @@
       "PackagePath": "staticwebassets\\css\\boostwatchTheme.css"
     },
     {
+      "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\order.css",
+      "PackagePath": "staticwebassets\\css\\order.css"
+    },
+    {
       "Id": "C:\\CodeVisualStudio\\Learn_Net_Core\\BulkyBook\\BulkyBookWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -12,6 +12,7 @@ namespace BulkyBook.Models
     public class OrderHeader
     {
         public int Id { get; set; }
+        public string? OrderCode { get; set; }
         public string ApplicationUserId { get; set; }
         [ForeignKey("ApplicationUserId")]
         [ValidateNever]

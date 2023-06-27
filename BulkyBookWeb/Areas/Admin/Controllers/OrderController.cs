@@ -146,9 +146,20 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
 		public IActionResult ShipOrder()
 		{
 			var orderHeader = _unitOfWork.OrderHeader.GetFirstOrDefault(u => u.Id == OrderVM.OrderHeader.Id, tracked: false);
-			orderHeader.TrackingNumber = OrderVM.OrderHeader.TrackingNumber;
-			orderHeader.Carrier = OrderVM.OrderHeader.Carrier;
-			orderHeader.OrderStatus = SD.StatusShipped;
+            var carriers = new String[] { "Viettel Post", "EMS", "GHN", "Kerry" };
+            var date = DateTime.Now.ToString("yyMMdd");
+            Random random = new Random();
+            string randomNumber = random.Next(0, 999999).ToString("D6");
+            var trackingNumber = date + randomNumber;
+            var carrier = carriers[random.Next(carriers.Length)];
+
+            //orderHeader.TrackingNumber = OrderVM.OrderHeader.TrackingNumber;
+            //orderHeader.Carrier = OrderVM.OrderHeader.Carrier;
+            orderHeader.TrackingNumber = trackingNumber;
+            OrderVM.OrderHeader.TrackingNumber = trackingNumber;
+            orderHeader.Carrier = carrier;
+            OrderVM.OrderHeader.Carrier = carrier;
+            orderHeader.OrderStatus = SD.StatusShipped;
 			orderHeader.ShippingDate = DateTime.Now;
 			if (orderHeader.PaymentStatus == SD.PaymentStatusDelayedPayment)
 			{
@@ -161,7 +172,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
 		}
 
         [HttpPost]
-        [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
+        //[Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
         [ValidateAntiForgeryToken]
         public IActionResult CancelOrder()
         {

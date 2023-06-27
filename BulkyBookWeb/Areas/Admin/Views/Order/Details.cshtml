@@ -26,17 +26,15 @@
 								</h4>
 							</div>
 							<div class="row my-1">
+								<div class="col-3">OrderCode</div>
+								<div class="col-9">
+									<input asp-for="OrderHeader.OrderCode" type="text" class="form-control" />
+									<span asp-validation-for="OrderHeader.OrderCode" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="row my-1">
 								<div class="col-3">Name</div>
 								<div class="col-9">
-									@*@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-									{
-										<input asp-for="OrderHeader.Name" type="text" class="form-control" />
-										<span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
-									}
-									else
-									{
-										<input asp-for="OrderHeader.Name" readonly type="text" class="form-control" />
-									}*@
 									<input asp-for="OrderHeader.Name" type="text" class="form-control" />
 									<span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
 								</div>
@@ -44,15 +42,6 @@
 							<div class="row my-1">
 								<div class="col-3">Phone</div>
 								<div class="col-9">
-									@*@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-									{
-										<input asp-for="OrderHeader.PhoneNumber" type="text" class="form-control" />
-										<span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
-									}
-									else
-									{
-										<input asp-for="OrderHeader.PhoneNumber" readonly type="text" class="form-control" />
-									}*@
 									<input asp-for="OrderHeader.PhoneNumber" type="text" class="form-control" />
 									<span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
 								</div>
@@ -60,15 +49,6 @@
 							<div class="row my-1">
 								<div class="col-3">Address</div>
 								<div class="col-9">
-									@*@if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-									{
-										<input asp-for="OrderHeader.StreetAddress" type="text" class="form-control" />
-										<span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
-									}
-									else
-									{
-										<input asp-for="OrderHeader.StreetAddress" readonly type="text" class="form-control" />
-									}*@
 									<input asp-for="OrderHeader.StreetAddress" type="text" class="form-control" />
 									<span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
 								</div>
@@ -252,16 +232,16 @@
 								}
 								if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)
 								{
-									<input type="submit" onclick="return validateInput()"
+									<input type="submit" onclick=""
 								   asp-action="ShipOrder" class="btn btn-primary form-control my-1" value="Ship Order" />
-								}
-
-								@if (Model.OrderHeader.OrderStatus != SD.StatusRefunded &&
-										Model.OrderHeader.OrderStatus != SD.StatusCancelled &&
-										Model.OrderHeader.OrderStatus != SD.StatusShipped)
-								{
-									<input type="submit" asp-action="CancelOrder" class="btn btn-danger form-control my-1" value="Cancel Order" />
-								}
+								  @* <a asp-action="ShipOrder" class="btn btn-primary form-control my-1"/>*@
+								}								
+							}
+							@if (Model.OrderHeader.OrderStatus != SD.StatusRefunded &&
+									Model.OrderHeader.OrderStatus != SD.StatusCancelled &&
+									Model.OrderHeader.OrderStatus != SD.StatusShipped)
+							{
+								<input type="submit" asp-action="CancelOrder" class="btn btn-danger form-control my-1" value="Cancel Order" />
 							}
 						</div>
 					</div>

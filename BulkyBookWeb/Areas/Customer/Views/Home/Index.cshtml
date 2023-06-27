@@ -1,85 +1,103 @@
 ﻿@model PaginatedList<BulkyBook.Models.Product>
-
-<div class="container">
-   @* <form asp-action="Index" method="get">
-        <div class="form-actions no-color">
-            <p>
-                Find by title: <input type="text" name="searchString" value="@ViewData["SearchString"]" />
-                <input type="submit" value="Search" class="btn btn-default" /> |
-                <a asp-action="Index">Back to Full List</a>
-            </p>
-            <input type="hidden" name="category" value="@ViewData["Category"]" />
-        </div>
-    </form>*@
-    <p>
-        Sorted by:
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Title</a>
-        <a class="btn btn-link" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Price</a>
-
-    </p>
-    <div class="form-group">
-        <form asp-action="Index" method="get">
-            <select name="category" class="form-control" onchange="this.form.submit();">
-                <option value="">All</option>
-                @foreach (var category in ViewData["Categories"] as List<string>)
-                {
-                    <option value="@category" selected="@((string)ViewData["Category"] == category)">@category</option>
-                }
-            </select>
-            <input type="text" name="searchString" value="@ViewData["SearchString"]" style="display: none;" />
-        </form>
-    </div>
-
-    <div class="row pb-3">
-        @foreach (var product in Model)
+<link rel="stylesheet" href="~/css/home.css" />
+<div class="container row">
+    <div class="col-2">
+        <h4>Category</h4>
+        @foreach(var category in ViewData["Categories"] as List<String>)
         {
-            <div class="col-lg-3 col-md-6">
-                <div class="row p-2">
-                    <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:520px">
-                        <div class="card" style="height:100%">
-                            <img src="@product.ImageUrl" class="cardcard-img-top rounded" style="height:200px" />
-                            <div class="card-body">
-                                <div class="pl-1">
-                                    <p class=" h5 text-primary">@product.Title</p>
-                                    <p class=" text-info">by <b>@product.Author</b></p>
-                                </div>
+            <form class="category_box" asp-action="Index" method="get">
+                <a class="category_link" asp-route-category="@category" onclick="updateSelectedCategory('@category')">@category</a>
+                <input type="text" name="searchString" value="@ViewData["SearchString"]" style="display: none;" />
+            </form>
+        }
 
-                                <div class="pl-1">
-                                    <p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
-                                </div>
+    </div>
+    <div class="col-10">
 
-                                <div class="pl-1">
-                                    <p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+        <p>
+            Sorted by:
+            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Title</a>
+            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Price</a>
+
+        </p>
+        <h2 id="selectedCategory"></h2>
+        <div class="row pb-3">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="row p-2">
+                        <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:520px">
+                            <div class="card" style="height:100%">
+                                <img src="@product.ImageUrl" class="cardcard-img-top rounded" style="height:200px" />
+                                <div class="card-body">
+                                    <div class="pl-1">
+                                        <p class=" h5 text-primary">@product.Title</p>
+                                        <p class=" text-info">by <b>@product.Author</b></p>
+                                    </div>
+
+                                    <div class="pl-1">
+                                        <p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
+                                    </div>
+
+                                    <div class="pl-1">
+                                        <p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
-                                    Details
-                                </a>
+                                <div>
+                                    <a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">
+                                        Details
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
 
-    <div class="d-flex justify-content-center">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Previous</a>
-                </li>
-                @for (int i = 1; i <= Model.TotalPages; i++)
-                {
-                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
-                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">@i</a>
+        <div class="d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item @(Model.PageIndex == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Previous</a>
                     </li>
-                }
-                <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Next</a>
-                </li>
-            </ul>
-        </nav>
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(Model.PageIndex == Model.TotalPages ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //$(".category_link").click(function () {
+            //    // Xóa lớp CSS "selected-category-box" từ tất cả các thẻ
+            //    $(".category_box").removeClass("selected-category-box");
+
+            //    // Thêm lớp CSS "selected-category-box" cho thẻ cha của thẻ được click
+            //    $(this).closest(".category_box").addClass("selected-category-box");
+            //    localStorage.setItem('selectedCategory',$(this).text());
+            //});
+            var selectedCategory = localStorage.getItem("selectedCategory");
+            if (selectedCategory) {
+                $("#selectedCategory").text(selectedCategory);
+            }
+        });
+
+        function updateSelectedCategory(categoryName) {
+            // Cập nhật nội dung của phần tử h2
+            $("#selectedCategory").text(categoryName);
+
+            // Lưu trữ tên danh mục vào localStorage
+            localStorage.setItem("selectedCategory", categoryName);
+        }
+    </script>
+}
