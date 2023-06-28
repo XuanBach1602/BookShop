@@ -34,23 +34,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarColor02">
-					<ul class="navbar-nav me-auto" >
-						<li class="nav-item">
-							<a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item" >
+							<a class="nav-link text-white" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
 						</li>
 						@if (User.IsInRole(SD.Role_Admin))
 						{
 							<li class="nav-item">
-								<a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin Page</a>
+								<a class="nav-link text-white" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin Page</a>
 							</li>
 						}
 					</ul>
 					<ul class="navbar-nav ms-auto">
 						<li class="nav-item">
-							<a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
+							<a class="nav-link text-white" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
 						</li>
 						<li class="nav-item">
-							<partial name="_LoginPartial" />
+							<partial class="text-white" name="_LoginPartial" />
 						</li>
 							<li class="nav-item">
 								<a href="@Url.Action("Index", "Cart", new { area = "Customer" })" class="nav-link active d-flex align-items-center">
@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-	<div class="container" style="background-color:#f5f5f5; margin: 0 30px 0 60px">
+	<div class="container" style="background-color:#f5f5f5; margin: 0 30px 0 60px; margin-right: 60px">
 		<main role="main" class="p-3">
 			<partial name="_Notification" />
 			@RenderBody()
@@ -94,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/rtw2nzsq4vt9ea610356b2vquhz91smy9tdpuewbrf9yd2sz/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -118,7 +118,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         //    return View(coverTypeFromDbFirst);
         //}
 
-        #region APT CALLS
+        #region API CALLS
         [HttpGet]
         public IActionResult GetAll()
         {

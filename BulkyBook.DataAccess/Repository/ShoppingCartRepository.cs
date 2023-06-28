@@ -28,5 +28,10 @@ namespace BulkyBook.DataAccess.Repository
             cart.Count += count;
             return cart.Count;
         }
+
+        public void Update(ShoppingCart cart, int quantity)
+        {
+            cart.Count = quantity;
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace BulkyBook.DataAccess.Repository.IRepository
     {
         public int IncrementCount(ShoppingCart cart, int count);
         public int DecrementCount(ShoppingCart cart, int count);
+        public void Update(ShoppingCart cart, int quantity);
+
     }
     
 }

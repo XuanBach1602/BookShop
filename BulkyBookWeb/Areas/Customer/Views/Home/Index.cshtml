@@ -1,18 +1,22 @@
 ﻿@model PaginatedList<BulkyBook.Models.Product>
 <link rel="stylesheet" href="~/css/home.css" />
 <div class="container row">
-    <div class="col-2">
-        <h4>Category</h4>
-        @foreach(var category in ViewData["Categories"] as List<String>)
-        {
+    <div class="col-2 mb-4 left-container">
+        <div class="category-container">
+            <h4>Category</h4>
             <form class="category_box" asp-action="Index" method="get">
-                <a class="category_link" asp-route-category="@category" onclick="updateSelectedCategory('@category')">@category</a>
-                <input type="text" name="searchString" value="@ViewData["SearchString"]" style="display: none;" />
+                <a class="category_link" asp-route-searchString="@ViewData["SearchString"]">All</a>
             </form>
-        }
+            @foreach (var category in ViewData["Categories"] as List<String>)
+            {
+                <form class="category_box" asp-action="Index" method="get">
+                    <a class="category_link" asp-route-category="@category" asp-route-searchString="@ViewData["SearchString"]">@category</a>
+                </form>
+            }
+        </div>
 
     </div>
-    <div class="col-10">
+    <div class="col-10 right-container">
 
         <p>
             Sorted by:
@@ -20,18 +24,18 @@
             <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Price</a>
 
         </p>
-        <h2 id="selectedCategory"></h2>
+        <h2 id="selectedCategory">@ViewData["Category"]</h2>
         <div class="row pb-3">
             @foreach (var product in Model)
             {
                 <div class="col-lg-3 col-md-6">
                     <div class="row p-2">
-                        <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:520px">
+                        <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:500px">
                             <div class="card" style="height:100%">
                                 <img src="@product.ImageUrl" class="cardcard-img-top rounded" style="height:200px" />
                                 <div class="card-body">
                                     <div class="pl-1">
-                                        <p class=" h5 text-primary">@product.Title</p>
+                                        <p class=" h5 text-primary product-title">@product.Title</p>
                                         <p class=" text-info">by <b>@product.Author</b></p>
                                     </div>
 
@@ -76,28 +80,5 @@
     </div>
 </div>
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            //$(".category_link").click(function () {
-            //    // Xóa lớp CSS "selected-category-box" từ tất cả các thẻ
-            //    $(".category_box").removeClass("selected-category-box");
-
-            //    // Thêm lớp CSS "selected-category-box" cho thẻ cha của thẻ được click
-            //    $(this).closest(".category_box").addClass("selected-category-box");
-            //    localStorage.setItem('selectedCategory',$(this).text());
-            //});
-            var selectedCategory = localStorage.getItem("selectedCategory");
-            if (selectedCategory) {
-                $("#selectedCategory").text(selectedCategory);
-            }
-        });
-
-        function updateSelectedCategory(categoryName) {
-            // Cập nhật nội dung của phần tử h2
-            $("#selectedCategory").text(categoryName);
-
-            // Lưu trữ tên danh mục vào localStorage
-            localStorage.setItem("selectedCategory", categoryName);
-        }
-    </script>
+    
 }

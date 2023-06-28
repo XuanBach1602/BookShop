@@ -1,4 +1,5 @@
-﻿@model BulkyBook.Models.ViewModels.ShoppingCartVM
+﻿@using System.Security.Claims;
+@model BulkyBook.Models.ViewModels.ShoppingCartVM
 
 <form method="post">
 	<br />
@@ -29,14 +30,20 @@
 					<div class="col-12  col-lg-5 text-center row">
 						<div class="col-4 text-md-right pt-4">
 							<h6><strong>@item.Price.ToString("c")
-								<span class="text-muted">&nbsp;x&nbsp;</span>@item.Count </strong></h6>
+										<span class="text-muted">&nbsp;x&nbsp;</span>
+										<span id="item-count-@item.Id">@item.Count</span>
+									</strong>
+								</h6>
 						</div>
 						<div class="col-6 col-sm-4 col-lg-6 pt-2">
 							<div class="w-75 btn-group" role="group">
-								<a asp-action="plus" asp-route-cartId="@item.Id" class="btn btn-primary">
+								@*<a asp-action="plus" asp-route-cartId="@item.Id" class="btn btn-primary">
 									<i class="bi bi-plus-square"></i>
-								</a> &nbsp;
-								<a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-warning">
+								</a> &nbsp;*@
+								<a class="btn btn-primary plus-button" data-cart-id="@item.Id">
+									<i class="bi bi-plus-square"></i>
+								</a>
+									<a class="btn btn-warning minus-button" data-cart-id="@item.Id">
 									<i class="bi bi-dash-square"></i>
 								</a>
 							</div>
@@ -56,7 +63,7 @@
 						<ul class="list-group">
 							<li class="list-group-item d-flex justify-content-between bg-light">
 								<span class="text-info"> Total (USD)</span>
-								<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+								<strong class="text-info" id="orderTotal">$@Model.OrderHeader.OrderTotal.ToString("F2")</strong>
 							</li>
 						</ul>
 					</div>
@@ -74,3 +81,55 @@
 		</div>
 	</div>
 </form>
+@section Scripts{
+	<script>
+		$(document).ready(function () {
+			$('.plus-button').click(function (e) {
+				e.preventDefault();
+
+				var cartId = $(this).data('cart-id');
+				$.ajax({
+					url: '/Customer/Cart/Plus',
+					type: 'POST',
+					data: {
+						cartId: cartId
+
+					},
+					success: function (response) {
+						var newCount = response.newCount; // Giả sử phản hồi từ máy chủ chứa giá trị mới
+						var newOrderTotal = response.newOrderTotal.toFixed(2); // Làm tròn đến 2 chữ số thập phân và định dạng thành tiền tệ
+						$('#item-count-' + cartId).text(newCount);
+						$('#orderTotal').text('$' + newOrderTotal);
+						
+					},
+					error: function (xhr, status, error) {
+						console.error("Lỗi xảy ra:", error);
+					}
+				});
+			});
+			$('.minus-button').click(function (e) {
+				e.preventDefault();
+
+				var cartId = $(this).data('cart-id');
+				$.ajax({
+					url: '/Customer/Cart/minus',
+					type: 'POST',
+					data: {
+						cartId: cartId
+					},
+					success: function (response) {
+						var newCount = response.newCount; // Giả sử phản hồi từ máy chủ chứa giá trị mới
+						var newOrderTotal = response.newOrderTotal.toFixed(2); // Làm tròn đến 2 chữ số thập phân và định dạng thành tiền tệ
+						$('#item-count-' + cartId).text(newCount);
+						$('#orderTotal').text('$' + newOrderTotal);
+
+					},
+					error: function (xhr, status, error) {
+						console.error("Lỗi xảy ra:", error);
+					}
+				});
+			});
+		});
+	</script>
+}
+	
