@@ -239,25 +239,12 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         public IActionResult Minus(int cartId)
         {
             var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(u => u.Id == cartId);
-            if(cart.Count <= 1)
-            {
-                _unitOfWork.ShoppingCart.Remove(cart);
-            }
-            else _unitOfWork.ShoppingCart.DecrementCount(cart, 1);
+            _unitOfWork.ShoppingCart.DecrementCount(cart, 1);
             _unitOfWork.Save();
 			var newCount = _unitOfWork.ShoppingCart.GetFirstOrDefault(u => u.Id == cartId).Count;
 			var newOrderTotal = GetOrderTotal();
 			return Json(new { newCount, newOrderTotal });
 		}
-
-        public IActionResult Adjust(int cartId, int quantity)
-        {
-            var cart = _unitOfWork.ShoppingCart.GetFirstOrDefault(u => u.Id == cartId);
-            _unitOfWork.ShoppingCart.Update(cart, quantity);
-            _unitOfWork.Save();
-            return RedirectToAction("Index");
-        }
-
 
         public IActionResult Remove(int cartId)
         {
@@ -268,8 +255,9 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 			var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 			int cartCount = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count;
 			HttpContext.Session.SetInt32(SD.SessionCart, cartCount);
-			return RedirectToAction("Index");
-        }
+			var newOrderTotal = GetOrderTotal();
+			return Json(new { success = true, removedProductId = cart.ProductId, newOrderTotal });
+		}
 
         public double GetOrderTotal()
         {

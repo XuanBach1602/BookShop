@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 function loadDataTable(status) {
     $('#tblData tfoot th').each(function (index) {
-        if (index < 6) {
+        if (index < 7) {
             var title = $(this).text();
             $(this).html('<input type="text" class="search-input" placeholder="Search" />');
         }
@@ -33,10 +33,11 @@ function loadDataTable(status) {
         },
         "columns": [
             { "data": "id", "width": "10%" },
-            { "data": "name", "width": "25%" },
+            { "data": "name", "width": "15%" },
             { "data": "phoneNumber", "width": "15%" },
             { "data": "applicationUser.email", "width": "15%" },
             { "data": "orderStatus", "width": "15%" },
+            { "data": "orderCode", "width": "10%" },
             { "data": "orderTotal", "width": "10%" },
             {
                 "data": "id",
@@ -53,7 +54,7 @@ function loadDataTable(status) {
         ],
         "initComplete": function () {
             this.api().columns().every(function (index) {
-                if (index < 6) {
+                if (index < 7) {
                     var column = this;
                     $('input', this.footer()).on('keyup change clear', function () {
                         if (column.search() !== this.value) {

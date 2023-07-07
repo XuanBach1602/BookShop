@@ -19,7 +19,7 @@
 
 			<div class="card-body">
 				@foreach(var item in Model.ListCart){
-				<div class="row">
+				<div class="row product-container">
 					<div class="d-none d-lg-block col-lg-1 text-center py-2">
 						<img src="@item.Product.ImageUrl" class="rounded" width="100%" />
 					</div>
@@ -43,14 +43,14 @@
 								<a class="btn btn-primary plus-button" data-cart-id="@item.Id">
 									<i class="bi bi-plus-square"></i>
 								</a>
-									<a class="btn btn-warning minus-button" data-cart-id="@item.Id">
+								<a class="btn btn-warning minus-button" data-cart-id="@item.Id">
 									<i class="bi bi-dash-square"></i>
 								</a>
 							</div>
 
 						</div>
 						<div class="col-2 col-sm-4 col-lg-2 text-right pt-2">
-							<a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-danger">
+								<a class="btn btn-danger remove-button" data-cart-id="@item.Id">
 								<i class="bi bi-trash-fill"></i>
 							</a>
 						</div>
@@ -93,7 +93,6 @@
 					type: 'POST',
 					data: {
 						cartId: cartId
-
 					},
 					success: function (response) {
 						var newCount = response.newCount; // Giả sử phản hồi từ máy chủ chứa giá trị mới
@@ -107,22 +106,94 @@
 					}
 				});
 			});
+			//$('.minus-button').click(function (e) {
+			//	e.preventDefault();
+
+			//	var cartId = $(this).data('cart-id');
+			//	$.ajax({
+			//		url: '/Customer/Cart/Minus',
+			//		type: 'POST',
+			//		data: {
+			//			cartId: cartId
+			//		},
+			//		success: function (response) {
+			//			var newCount = response.newCount; // Giả sử phản hồi từ máy chủ chứa giá trị mới
+			//			var newOrderTotal = response.newOrderTotal.toFixed(2); // Làm tròn đến 2 chữ số thập phân và định dạng thành tiền tệ
+			//			$('#item-count-' + cartId).text(newCount);
+			//			$('#orderTotal').text('$' + newOrderTotal);
+
+			//		},
+			//		error: function (xhr, status, error) {
+			//			console.error("Lỗi xảy ra:", error);
+			//		}
+			//	});
+			//});
 			$('.minus-button').click(function (e) {
 				e.preventDefault();
 
 				var cartId = $(this).data('cart-id');
+				var itemCount = parseInt($('#item-count-' + cartId).text());
+
+				if (itemCount > 1) {
+					$.ajax({
+						url: '/Customer/Cart/Minus',
+						type: 'POST',
+						data: {
+							cartId: cartId
+						},
+						success: function (response) {
+							var newCount = response.newCount;
+							var newOrderTotal = response.newOrderTotal.toFixed(2);
+							$('#item-count-' + cartId).text(newCount);
+							$('#orderTotal').text('$' + newOrderTotal);
+						},
+						error: function (xhr, status, error) {
+							console.error("Lỗi xảy ra:", error);
+						}
+					});
+				} else {
+					$.ajax({
+						url: '/Customer/Cart/Remove',
+						type: 'POST',
+						data: {
+							cartId: cartId
+						},
+						success: function (response) {
+							if (response.success) {
+								$('#item-count-' + cartId).closest('.product-container').remove();
+								var newOrderTotal = response.newOrderTotal.toFixed(2);
+								$('#orderTotal').text('$' + newOrderTotal);
+							} else {
+								console.error("Không thể xóa sản phẩm khỏi giỏ hàng.");
+							}
+						},
+						error: function (xhr, status, error) {
+							console.error("Lỗi xảy ra:", error);
+						}
+					});
+				}
+			});
+
+			$('.remove-button').click(function (e) {
+				e.preventDefault();
+
+				var cartId = $(this).data('cart-id');
 				$.ajax({
-					url: '/Customer/Cart/minus',
+					url: '/Customer/Cart/Remove',
 					type: 'POST',
 					data: {
 						cartId: cartId
 					},
 					success: function (response) {
-						var newCount = response.newCount; // Giả sử phản hồi từ máy chủ chứa giá trị mới
-						var newOrderTotal = response.newOrderTotal.toFixed(2); // Làm tròn đến 2 chữ số thập phân và định dạng thành tiền tệ
-						$('#item-count-' + cartId).text(newCount);
-						$('#orderTotal').text('$' + newOrderTotal);
+						if (response.success) {
+							// Xóa sản phẩm tương ứng trên giao diện người dùng
+							$('#item-count-' + cartId).closest('.product-container').remove();
 
+							var newOrderTotal = response.newOrderTotal.toFixed(2);
+							$('#orderTotal').text('$' + newOrderTotal);
+						} else {
+							console.error("Không thể xóa sản phẩm khỏi giỏ hàng.");
+						}
 					},
 					error: function (xhr, status, error) {
 						console.error("Lỗi xảy ra:", error);

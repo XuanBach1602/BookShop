@@ -10,7 +10,7 @@
             @foreach (var category in ViewData["Categories"] as List<String>)
             {
                 <form class="category_box" asp-action="Index" method="get">
-                    <a class="category_link" asp-route-category="@category" asp-route-searchString="@ViewData["SearchString"]">@category</a>
+                    <a class="category_link form-floating" asp-route-category="@category" asp-route-searchString="@ViewData["SearchString"]">@category</a>
                 </form>
             }
         </div>

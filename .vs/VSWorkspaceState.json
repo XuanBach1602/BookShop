@@ -4,14 +4,14 @@
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\Areas",
     "\\BulkyBookWeb\\Areas\\Customer",
-    "\\BulkyBookWeb\\Areas\\Customer\\Views",
-    "\\BulkyBookWeb\\Areas\\Customer\\Views\\Cart",
+    "\\BulkyBookWeb\\Areas\\Customer\\Controllers",
     "\\BulkyBookWeb\\Areas\\Identity",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account",
+    "\\BulkyBookWeb\\ViewComponents",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Shared"
   ],
-  "SelectedNode": "\\BulkyBookWeb\\Areas\\Customer\\Views\\Cart\\Index.cshtml",
+  "SelectedNode": "\\BulkyBookWeb\\ViewComponents\\ShoppingCartViewComponent.cs",
   "PreviewInSolutionExplorer": false
 }
