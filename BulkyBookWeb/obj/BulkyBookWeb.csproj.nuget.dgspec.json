@@ -335,7 +335,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[7.0.6, )"
+              "version": "[7.0.9, )"
             },
             "MimeKit": {
               "target": "Package",

@@ -76,6 +76,8 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SummaryPost()
         {
+            //var claimsIdentity = (ClaimsIdentity)User.Identity;
+            //var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 

@@ -17,11 +17,41 @@
 
     </div>
     <div class="col-10 right-container">
-
+        @{
+            Console.WriteLine(ViewData["CurrentSort"]);
+        }
         <p>
             Sorted by:
-            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Title</a>
-            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">Price</a>
+            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">
+                @if (ViewData["CurrentSort"] != null && string.Equals(ViewData["CurrentSort"].ToString(), "name", StringComparison.OrdinalIgnoreCase))
+                {
+                    <span>Title <i class="bi bi-sort-up"></i></span>
+                }
+                else if (ViewData["CurrentSort"] != null && string.Equals(ViewData["CurrentSort"].ToString(), "name_desc", StringComparison.OrdinalIgnoreCase))
+                {
+                    <span>Title <i class="bi bi-sort-down"></i></span>
+                }
+                else
+                {
+                    <span>Title</span>
+                }
+
+
+            </a>
+            <a class="btn sort-btn" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-searchString="@ViewData["SearchString"]" asp-route-category="@ViewData["Category"]">
+                @if (ViewData["CurrentSort"] != null && string.Equals(ViewData["CurrentSort"].ToString(), "price", StringComparison.OrdinalIgnoreCase))
+                {
+                    <span>Price <i class="bi bi-sort-up"></i></span>
+                }
+                else if (ViewData["CurrentSort"] != null && string.Equals(ViewData["CurrentSort"].ToString(), "price_desc", StringComparison.OrdinalIgnoreCase))
+                {
+                    <span>Price <i class="bi bi-sort-down"></i></span>
+                }
+                else
+                {
+                    <span>Price</span>
+                }
+            </a>
 
         </p>
         <h2 id="selectedCategory">@ViewData["Category"]</h2>
@@ -30,7 +60,7 @@
             {
                 <div class="col-lg-3 col-md-6">
                     <div class="row p-2">
-                        <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:500px">
+                        <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;height:520px">
                             <div class="card" style="height:100%">
                                 <img src="@product.ImageUrl" class="cardcard-img-top rounded" style="height:200px" />
                                 <div class="card-body">
@@ -80,5 +110,5 @@
     </div>
 </div>
 @section Scripts {
-    
+
 }

@@ -3,15 +3,14 @@
     "",
     "\\BulkyBookWeb",
     "\\BulkyBookWeb\\Areas",
-    "\\BulkyBookWeb\\Areas\\Customer",
-    "\\BulkyBookWeb\\Areas\\Customer\\Controllers",
     "\\BulkyBookWeb\\Areas\\Identity",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages",
     "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account",
+    "\\BulkyBookWeb\\Areas\\Identity\\Pages\\Account\\Manage",
     "\\BulkyBookWeb\\ViewComponents",
     "\\BulkyBookWeb\\Views",
     "\\BulkyBookWeb\\Views\\Shared"
   ],
-  "SelectedNode": "\\BulkyBookWeb\\ViewComponents\\ShoppingCartViewComponent.cs",
+  "SelectedNode": "\\BulkyBookWeb\\Views\\Shared\\_LoginPartial.cshtml",
   "PreviewInSolutionExplorer": false
 }
