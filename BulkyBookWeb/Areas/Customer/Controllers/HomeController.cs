@@ -1,6 +1,7 @@
 ﻿using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Utility;
+using BulkyBookWeb.BussinessLayer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,10 +30,6 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
          int? pageNumber,
          string category)
         {
-            var products = from product in _unitOfWork.Product.GetAll(includeProperties: "Category,CoverType")
-                           select product;
-
-
             ViewData["NameSortParm"] = sortOrder == "name_desc" ? "name" : "name_desc";
             ViewData["PriceSortParm"] = sortOrder == "price" ? "price_desc" : "price";
             ViewData["Category"] = category;
@@ -40,36 +37,11 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             ViewData["SearchString"] = searchString;
             ViewData["CurrentSort"] = sortOrder;
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                products = products.Where(p => p.Title.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-            if (!string.IsNullOrEmpty(category))
-            {
-                products = products.Where(p => p.Category.Name == category);
-            }
-
-            var searchedProducts = products; // Lưu kết quả tìm kiếm
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    searchedProducts = searchedProducts.OrderByDescending(s => s.Title);
-                    break;
-                case "price":
-                    searchedProducts = searchedProducts.OrderBy(s => s.Price100);
-                    break;
-                case "price_desc":
-                    searchedProducts = searchedProducts.OrderByDescending(s => s.Price100);
-                    break;
-                default:
-                    searchedProducts = searchedProducts.OrderBy(s => s.Title);
-                    break;
-            }
+            var productBLL = new ProductBLL(_unitOfWork);
+            var products = productBLL.GetProducts(sortOrder, searchString, category);
 
             int pageSize = 8;
-            return View(await PaginatedList<Product>.CreateAsync(searchedProducts, pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<Product>.CreateAsync(products, pageNumber ?? 1, pageSize));
         }
 
 
